@@ -401,7 +401,7 @@ for filename in $ALL_FILES; do
     inputfile="$gtfsdir/$filename"
     tablename=$(basename $filename .txt)
     if [ -r "$inputfile" ]; then
-        echo "\\COPY $tablename FROM '$inputfile' (FORMAT CSV, HEADER)"
+        echo "\\COPY $tablename from program 'sed ''/^\s*$/d'' $inputfile' (FORMAT CSV, HEADER)"
     fi
 done
 
