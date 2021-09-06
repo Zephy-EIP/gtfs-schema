@@ -360,7 +360,22 @@ for filename in $MANDATORY_FILES $OPTIONAL_FILES; do
         echo
     else
         echo "DROP TABLE IF EXISTS $tablename CASCADE;"
+        echo
         echo "CREATE TABLE $tablename"
+        echo -n "("
+
+        separator=
+        for i in "${!COLUMN_DATA_TYPES[@]}"; do
+            if [[ "$tablename.txt" == ${i:0:$((${#tablename} + 4))} ]]; then
+                echo $separator
+                echo -n "  ${i:$((${#tablename} + 5))} ${COLUMN_DATA_TYPES[$i]}"
+                separator=,
+            fi
+        done
+
+        echo
+        echo ");"
+        echo
     fi
 done
 
