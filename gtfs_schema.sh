@@ -358,6 +358,9 @@ for filename in $MANDATORY_FILES $OPTIONAL_FILES; do
         echo
         echo ");"
         echo
+    else
+        echo "DROP TABLE IF EXISTS $tablename CASCADE;"
+        echo "CREATE TABLE $tablename"
     fi
 done
 
