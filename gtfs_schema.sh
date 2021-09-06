@@ -199,6 +199,24 @@ OPTIONAL_FILES="
     feed_info.txt
     translations.txt
 "
+ALL_FILES="
+    agency.txt
+    levels.txt
+    stops.txt
+    routes.txt
+    calendar.txt
+    calendar_dates.txt
+    trips.txt
+    stop_times.txt
+    fare_attributes.txt
+    fare_rules.txt
+    shapes.txt
+    frequencies.txt
+    transfers.txt
+    pathways.txt
+    feed_info.txt
+    translations.txt
+"
 
 declare -a MANDATORY_COLUMNS
 MANDATORY_COLUMNS=(
@@ -327,7 +345,7 @@ done
 # Actual schema generation. For each file generate a table. Then for each
 # column in the file generate a column.
 first=true
-for filename in $MANDATORY_FILES $OPTIONAL_FILES; do
+for filename in $ALL_FILES; do
     inputfile="$gtfsdir/$filename"
     tablename=$(basename $filename .txt)
     if [ -r "$inputfile" ]; then
