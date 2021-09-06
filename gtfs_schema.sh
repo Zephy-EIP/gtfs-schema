@@ -397,7 +397,7 @@ for filename in $ALL_FILES; do
     fi
 done
 
-for filename in $MANDATORY_FILES $OPTIONAL_FILES; do
+for filename in $ALL_FILES; do
     inputfile="$gtfsdir/$filename"
     tablename=$(basename $filename .txt)
     if [ -r "$inputfile" ]; then
